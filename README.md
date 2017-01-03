@@ -6,7 +6,13 @@ nginx + unicorn Rails
 
 ## How To
 
+```
+$ git clone https://github.com/KeitaMoromizato/docker-sample-3
+$ cd docker-sample-3
+$ sudo docker-compose build
+```
 
+Railsアプリを動かすための初期設定
 
 ```
 $ sudo docker-compose run --rm app bundle install
