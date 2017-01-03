@@ -1,0 +1,34 @@
+version: '2'
+services:
+  app:
+    build: .
+    command: foreman start -f Procfile.dev
+    environment:
+      RAILS_ENV: development
+      DATABASE_URL: mysql2://root:pass@mysql:3306
+      MYSQL_ROOT_PASSWORD: 'pass'
+    ports:
+      - '3000:3000'
+    volumes:
+      - .:/usr/src/app
+    links:
+      - mysql
+  mysql:
+    image: mysql:5.7.10
+    environment:
+      MYSQL_ROOT_PASSWORD: 'pass'
+    ports:
+      - '3306:3306'
+    volumes:
+      - mysql-data:/var/lib/mysql
+  nginx:
+    image: nginx:1.11.8
+    ports:
+      - '80:8080'
+    links:
+      - 'app'
+    volumes:
+      - ./nginx:/etc/nginx/conf.d:ro
+volumes:
+  mysql-data:
+    driver: local
