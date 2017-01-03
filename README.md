@@ -1,7 +1,6 @@
 # Docker Sample 3
 
 nginx + unicorn Rails + MySQLをDocker Composeで構成するサンプル
-モジュールの永続化、DBの永続化、Linkの仕組み？
 
 ## How To
 
